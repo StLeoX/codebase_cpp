@@ -29,10 +29,10 @@ static void sort_table_by_first(const std::unordered_map<std::string, uint32_t> 
     std::sort(dst->begin(), dst->end(), cmp);
 
     // 比较方式2
-    std::sort(dst->begin(), dst->end(), [=](std::pair<std::string, uint32_t> &a, std::pair<std::string, uint32_t> &b)
-    {
-        return a.first < b.first;
-    });
+//    std::sort(dst->begin(), dst->end(), [=](std::pair<std::string, uint32_t> &a, std::pair<std::string, uint32_t> &b)
+//    {
+//        return a.first < b.first;
+//    });
 }
 
 
@@ -48,4 +48,10 @@ void test_sort_table_by_first()
     {
         printf("%s-%u\n", item.first.c_str(), item.second);
     }
+}
+
+int main()
+{
+    test_sort_table_by_first();
+    return 0;
 }
