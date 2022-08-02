@@ -31,3 +31,11 @@ set(
 add_subdirectory(stl_cb)
 add_subdirectory(mooon_cb)
 add_subdirectory(json_cb)
+
+option(BUILD_TEST "Whether or not to build the tests" ON)
+if (${BUILD_TEST})
+    message(STATUS "Building tests")
+    enable_testing()  # Enable testing only works in root scope
+    add_subdirectory(test)
+endif ()
+
