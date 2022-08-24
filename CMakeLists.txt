@@ -31,6 +31,7 @@ set(
 add_subdirectory(stl_cb)
 add_subdirectory(mooon_cb)
 add_subdirectory(json_cb)
+add_subdirectory(metaprogramming_cb)
 
 option(BUILD_TEST "Whether or not to build the tests" ON)
 if (${BUILD_TEST})

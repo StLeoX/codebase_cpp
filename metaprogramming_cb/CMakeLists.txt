@@ -1,0 +1,1 @@
+add_executable(test_ FactoryMethodUsingTemplate.cpp)
