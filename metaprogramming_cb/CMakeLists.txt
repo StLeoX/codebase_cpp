@@ -1,1 +1,2 @@
-add_executable(test_ FactoryMethodUsingTemplate.cpp)
+add_executable(metaprogramming_cb
+    FactoryMethodUsingTemplate.cpp)

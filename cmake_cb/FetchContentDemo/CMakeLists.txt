@@ -11,7 +11,7 @@ FetchContent_Declare(
     GIT_REPOSITORY https://github.com/google/googletest.git
     GIT_TAG release-1.12.1
 )
-FetchContent_MakeAvailable(googletest)
+FetchContent_MakeAvailable(googletest) #!
 
 # enable test mode
 enable_testing()

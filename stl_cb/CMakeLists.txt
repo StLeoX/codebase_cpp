@@ -1,1 +1,2 @@
-add_executable(test_stl test_sort.cpp)
+add_executable(stl_cb
+    test_sort.cpp)

@@ -159,7 +159,7 @@ v3开始从子项目添加库时，无需将项目include目录添加到二进�
     $ make
     Scanning dependencies of target sublibrary1
     [ 50%] Building CXX object sublibrary1/CMakeFiles/sublibrary1.dir/src/sublib1.cpp.o
-    Linking CXX static library libsublibrary1.a
+    Linking CXX static library libsublibrary1.s
     [ 50%] Built target sublibrary1
     Scanning dependencies of target subbinary
     [100%] Building CXX object subbinary/CMakeFiles/subbinary.dir/main.cpp.o

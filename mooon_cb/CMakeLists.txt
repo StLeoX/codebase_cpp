@@ -1,4 +1,5 @@
-add_executable(test_mooon test_mooon.cpp)
+add_executable(mooon_cb
+    test_mooon.cpp)
 
 # 系统库
 set(BASE_HOME /usr/local/)
