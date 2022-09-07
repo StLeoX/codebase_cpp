@@ -12,8 +12,9 @@ link_directories(${BASE_HOME}/lib) # static libraries, e.x. libmooon.a in it
 
 
 # 常用的第三方库
-set(
-    THIRDPART_LIB
+add_library(
+    THIRDPART
+    STATIC IMPORTED
     libgongyi_base.a
     libmooon.a
     libr3c.a libhiredis.a
