@@ -1,6 +1,6 @@
 -- 基于setnx指令的分布式互斥锁
 
--- lock01
+-- mutex impl01
 -- args:
 -- KEYS[1] 锁键
 -- ARGV[1] 锁值
@@ -19,7 +19,7 @@ else
 end
 
 
--- lock02
+-- mutex impl02
 -- args:
 -- KEYS[1] 锁键
 -- ARGV[1] 锁值
