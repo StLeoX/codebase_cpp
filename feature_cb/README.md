@@ -1,4 +1,4 @@
 ## Post-Modern C++ Features
 
-Features standardified after C++14, because C++11 is everywhere.
+Features standardified after C++17, because C++17 founded a new stage.
 

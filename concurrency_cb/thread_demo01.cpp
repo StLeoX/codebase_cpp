@@ -7,6 +7,8 @@
 #include <thread>
 #include <mutex>
 #include <condition_variable>
+#include <functional>
+#include <chrono>
 
 std::mutex m;
 std::condition_variable cv;
@@ -34,7 +36,7 @@ void worker_thread()
     cv.notify_one();
 }
 
-int main()
+void condition_variable_demo()
 {
     std::thread worker(worker_thread);
 
@@ -55,4 +57,35 @@ int main()
     std::cout << "Back in main(), data = " << data << '\n';
 
     worker.join();
+}
+
+
+// callback hell
+void AsyncAddOne(int value, std::function<void(int)> callback)
+{
+    std::thread([value, callback]
+                {
+                    std::cout << value;
+                    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+                    callback(value + 1);
+                }).detach();
+}
+
+void callback_hell_demo()
+{
+    AsyncAddOne(1, [](int result)
+    {
+        AsyncAddOne(result, [](int result)
+        {
+            AsyncAddOne(result, [](int result)
+            {
+                std::cout << result;
+            });
+        });
+    });
+}
+
+int main()
+{
+    callback_hell_demo();
 }
