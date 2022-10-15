@@ -1,43 +1,16 @@
 cmake_minimum_required(VERSION 2.8)
 project(cpp_code_base)
 
-# 寻找公益base库
-if (EXISTS /usr/local/gongyi/base/CMake.common)
-    message("${Yellow}gongyi_base at /usr/local/gongyi/base ${ColourReset}")
-    set(BASE_HOME /usr/local/gongyi/base)
-else ()
-    message("${Yellow}NOT found gongyi base (/usr/local/gongyi/base or /usr/local/gy_lib/base) ${ColourReset}")
-    return()
-endif ()
-
-# 公益base库
-include(${BASE_HOME}/CMake.common)
-include_directories(${BASE_HOME}/include)
-link_directories(${BASE_HOME}/lib)
-
-# 常用的第三方库
-set(
-    THIRDPART_LIB
-    libgongyi_base.a
-    libmooon.a
-    libr3c.a libhiredis.a
-    libcgicc.a libcurl.a libcares.a libidn.a
-    librdkafka++.a librdkafka.a libtrmem.a libqos_client.a libasn1c++.a
-    libthriftnb.a libthrift.a libevent.a libsqlite3.a
-    libssl.a libcrypto.a libmysqlclient.a
-    libfaceapi.a libcmlb.a libprotobuf.a # 取昵称依赖
-)
+set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/cmake-build-debug) # by CLion
+include_directories(${CMAKE_SOURCE_DIR}) # include all
+include_directories(${CMAKE_SOURCE_DIR}/thirdparty/gtest/include)
 
 add_subdirectory(stl_cb)
 add_subdirectory(mooon_cb)
 add_subdirectory(json_cb)
 add_subdirectory(metaprogramming_cb)
 add_subdirectory(opt_cb)
-
-option(BUILD_TEST "Whether or not to build the tests" OFF)
-if (${BUILD_TEST})
-    message(STATUS "Building tests")
-    enable_testing()  # Enable testing only works in root scope
-    add_subdirectory(test)
-endif ()
-
+add_subdirectory(util_cb)
+add_subdirectory(basic_cb)
+add_subdirectory(concurrency_cb)
+add_subdirectory(feature_cb)
