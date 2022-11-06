@@ -9,7 +9,7 @@
 #include <condition_variable>
 #include <mutex>
 
-#include "common_cb/macros.h"
+#include "common_cb/macros.hpp"
 
 /**
  * Reader-Writer lock backed by std::mutex.
