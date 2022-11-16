@@ -1,3 +1,6 @@
+project(concurrency_cb)
+message(STATUS "sub project " ${PROJECT_NAME})
+
 link_libraries(pthread)
 
 add_executable(future
