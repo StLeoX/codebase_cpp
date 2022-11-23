@@ -6,7 +6,8 @@
 #include <future>
 #include <thread>
 
-void three_futures_demo()
+/// std::future 的三种典型使用方式
+void demo01()
 {
     // future from a packaged_task
     std::packaged_task<int()> task1([] { return 1; }); // wrap the function
@@ -30,7 +31,8 @@ void three_futures_demo()
     t1.join();
 }
 
-void future_with_exception_demo()
+/// 针对 std::future 抛出异常
+void demo02()
 {
     std::promise<int> p;
     std::future<int> f = p.get_future();
@@ -60,4 +62,11 @@ void future_with_exception_demo()
         std::cout << "Exception from the thread: " << e.what() << '\n';
     }
     t.join();
+}
+
+int main(int argc, char *argv[])
+{
+    demo01();
+    demo02();
+    return 0;
 }

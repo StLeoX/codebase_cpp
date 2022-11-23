@@ -15,3 +15,5 @@ add_executable(tuple_demo
 add_executable(variant_demo
     variant_demo02.cpp)
 
+add_executable(regex_demo
+    regex_demo.cpp)
