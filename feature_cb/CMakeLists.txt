@@ -6,9 +6,12 @@ add_executable(lambda_demo
 target_link_libraries(lambda_demo
     pthread)
 
-add_executable(variant_demo
-    variant_demo02.cpp)
-
 add_executable(optional_demo
     optional_demo01.cpp)
+
+add_executable(tuple_demo
+    tuple_demo01.cpp)
+
+add_executable(variant_demo
+    variant_demo02.cpp)
 

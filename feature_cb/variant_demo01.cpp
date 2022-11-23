@@ -1,6 +1,8 @@
 //
 // Created by leo on 2022/2/9.
 // Abstract：借助 std::variant 和 std::visit 实现对 std::tuple 的遍历访问
+// ref：https://changkun.de/modern-cpp/zh-cn/04-containers/#%E8%BF%90%E8%A1%8C%E6%9C%9F%E7%B4%A2%E5%BC%95
+// 动机：std::get<I>(T) 的泛型I依赖于一个编译期常数（典型如constexpr），所以借助 std::variant 的和类型性实现“运行时索引”
 //
 
 #include <tuple>
@@ -38,7 +40,7 @@ void demo01()
 }
 
 template<typename T>
-auto tuple_len(T &tpl) -> size_t
+auto tuple_len(T &t) -> size_t
 {
     return std::tuple_size<T>::value;
 }
