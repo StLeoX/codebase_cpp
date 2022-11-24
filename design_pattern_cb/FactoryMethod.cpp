@@ -1,6 +1,5 @@
 //
 // Created by leolaxie on 2022/8/24.
-// Copyright 2022, Tencent Inc.
 //
 
 //Product.h
