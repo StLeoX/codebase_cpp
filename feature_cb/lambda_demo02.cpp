@@ -1,6 +1,6 @@
 //
 // Created by StLeoX on 2022/11/17.
-// Passing the copy of this object to lambda
+// Passing the copy of `this` object to lambda
 //
 
 #include <iostream>

@@ -3,6 +3,10 @@
 // 本节：lambda函数的定义，以及捕获自由变量的多种方式。
 //
 
+#include <functional>
+#include <iostream>
+#include <memory>
+
 // lambda函数的一般形式
 /**
  * [捕获列表](参数列表) mutable(可选) 异常属性 -> 返回类型 {
@@ -11,9 +15,11 @@
  * */
 
 // 值捕获
-void lambda_value_capture() {
+void lambda_value_capture()
+{
     int value = 1;
-    auto copy_value = [value] {
+    auto copy_value = [value]
+    {
         return value;
     };
     value = 100;
@@ -24,9 +30,11 @@ void lambda_value_capture() {
 }
 
 // 引用捕获，使用引用符号&
-void lambda_reference_capture() {
+void lambda_reference_capture()
+{
     int value = 1;
-    auto copy_value = [&value] {
+    auto copy_value = [&value]
+    {
         return value;
     };
     value = 100;
@@ -37,30 +45,51 @@ void lambda_reference_capture() {
 }
 
 // 表达式捕获
-#include <iostream>
-#include <memory>  // implements make_unique
-int lambda_expr_capture() {
+int lambda_expr_capture()
+{
     auto important = std::make_unique<int>(1);
-    auto add = [v1 = 1, v2 = std::move(important)](int x, int y) -> int {
-        return x+y+v1+(*v2);
+    auto add = [v1 = 1, v2 = std::move(important)](int x, int y) -> int
+    {
+        return x + y + v1 + (*v2);
     };
-    std::cout << add(3,4) << std::endl;
+    std::cout << add(3, 4) << std::endl;
     return 0;
 }
 
 
 using foo = void(int); // 定义函数类型, using创建别名
-void functional(foo f) { // 定义在参数列表中的函数类型 foo 被视为退化后的函数指针类型 foo*
+void functional(foo f)
+{ // 定义在参数列表中的函数类型 foo 被视为退化后的函数指针类型 foo*
     f(1); // 通过函数指针调用函数
 }
 
-int main() {
-    auto f = [](int value) {
+void demo01()
+{
+    auto f = [](int value)
+    {
         std::cout << value << std::endl;
     };
     // 当 Lambda 表达式的捕获列表为空时，闭包对象还能够转换为函数指针值进行传递。
     functional(f); // 传递闭包对象，隐式转换为 foo* 类型的函数指针值
     f(1); // lambda 表达式调用
-    return 0;
 }
 
+// currying through `lambda`
+std::function<int(int)> /* or `auto` since c++14 */ CreateAdder(int b)
+{
+    // value capture
+    return [b](int a) { return a + b; }
+}
+
+void demo02()
+{
+    auto ten_adder = CreateAdder(10);
+    std::cout << ten_adder(11) << std::endl;  // 21
+}
+
+int main(int argc, char *argv[])
+{
+    demo01();
+
+    return 0;
+}
